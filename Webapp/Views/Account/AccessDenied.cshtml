@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "User error";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Dump</h1>
+    <table>
+        <thead>
+            <tr>
+                <th align="left" >Claim</th>
+                <th align="left" >Value</th>
+            </tr>
+        </thead>
+        <tbody>
+    @{
+        var claimsIdentity = User.Identity as System.Security.Claims.ClaimsIdentity;
+        if (claimsIdentity != null)
+        {
+            
+            @foreach (var claim in claimsIdentity.Claims)
+            {
+                <tr>
+
+                            <td align="left"><b>@claim.Type</b></td>
+                            <td align="left">@claim.Value</td>
+                </tr>
+                
+            }
+                
+            
+        }
+    }
+        </tbody>
+    </table>
+
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
